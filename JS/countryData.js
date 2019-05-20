@@ -1,0 +1,58 @@
+const data = [
+    {
+        name: 'Moldova',
+        capital: 'Chisington',
+        population: 3550000,
+        phoneCode: '+373',
+        currency: 'MDL',
+        timeZone: '+2GMT',
+        area: 33846,
+    },
+    {
+        name: 'Romania',
+        capital: 'București',
+        population: 20121641,
+        phoneCode: '+40',
+        currency: 'RON',
+        timeZone: '+2GMT',
+        area: 238397,
+    },
+    {
+        name: 'Ucraina',
+        capital: 'Kiev',
+        population: 4845700,
+        phoneCode: '+380',
+        currency: 'UAH',
+        timeZone: '+2GMT',
+        area: 603634,
+    },
+    {
+        name: 'Uganda',
+        capital: 'Kampala',
+        population: 34634650,
+        phoneCode: '+256',
+        currency: 'UGX',
+        timeZone: '+3GMT',
+        area: 236040,
+    },
+    {
+        name: 'Zimbabwe',
+        capital: 'Harare',
+        population: 12160782,
+        phoneCode: '+263',
+        currency: 'USD',
+        timeZone: '+2GMT',
+        area: 390757,
+    },
+    {
+        name: 'North Korea',
+        capital: 'Pyongyang',
+        population: 25368620,
+        phoneCode: '+850',
+        currency: 'WON',
+        timeZone: '+9GMT',
+        area: 390757,
+    },
+];
+
+export default data;

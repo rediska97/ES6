@@ -1,0 +1,17 @@
+.container{
+    display: flex;
+    justify-content: center;
+    width: 990px;
+    margin: 0 auto;
+    flex-direction: column;
+}
+.container .controls{
+    display: flex;
+    justify-content: end;
+}
+
+.data-table {
+    display: flex;
+    justify-content: center;
+}
+
