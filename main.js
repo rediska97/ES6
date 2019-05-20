@@ -7,14 +7,7 @@ const MDTable = (countriesList) => html`
     <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
         <thead>
             <tr>
-                <th class="mdl-data-table__cell--non-numeric">ID</th>
-                <th>Name</th>
-                <th>Capital</th>
-                <th>Population</th>
-                <th>Area</th>
-                <th>Time zone</th>
-                <th>Currency</th>
-                <th>Phone Code</th>
+                ${Object.keys(countriesList[0]).map( (label) => html`<th>${formatLabel(label)}</th>` )}
             </tr>
         </thead>
        <tbody>
@@ -29,6 +22,19 @@ const MDTableRow = (country) => html`
 ${Object.keys(country).map(key => html`<td>${country[key]}</td>`)}
 </tr>
 `;
+
+function formatLabel (label) {
+
+    let result = label;
+    for (let i = 0; i<label.length; i++){
+
+        if ( (label[i] == label[i].toUpperCase()) && label[i-1] != undefined){
+            result = [label.slice(0, i), ' ', label.slice(i)].join('');
+        }
+    }
+    return result.toLocaleLowerCase();
+
+};
 
 // Render the template to the document
 render(MDTable(countriesList), document.querySelector('.data-table'));
