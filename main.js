@@ -26,11 +26,9 @@ const MDTable = (countriesList) => html`
 
 const MDTableRow = (country) => html`
 <tr>
-${Object.keys(country).map(key => html`<th>${country[key]}</th>`)}
+${Object.keys(country).map(key => html`<td>${country[key]}</td>`)}
 </tr>
 `;
 
-console.log(Object.keys(countriesList[0]));
-
 // Render the template to the document
-render(MDTable(countriesList), document.body);
+render(MDTable(countriesList), document.querySelector('.data-table'));

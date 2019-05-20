@@ -3,6 +3,7 @@ import countriesData from './countriesData.js'
 class Country {
     constructor(props) {
         this.id = props.id;
+        this.name = props.name;
         this.population = props.population;
         this.area = props.area;
         this.capital = props.capital;
