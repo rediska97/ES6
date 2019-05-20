@@ -1,5 +1,8 @@
+import countriesData from './countriesData.js'
+
 class Country {
     constructor(props) {
+        this.id = props.id;
         this.population = props.population;
         this.area = props.area;
         this.capital = props.capital;
@@ -8,3 +11,5 @@ class Country {
         this.phoneCode = props.phoneCode
     }
 }
+
+export const countriesList = countriesData.map( country => new Country(country));

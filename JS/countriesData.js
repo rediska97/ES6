@@ -1,5 +1,6 @@
 const data = [
     {
+        id: 1,
         name: 'Moldova',
         capital: 'Chisington',
         population: 3550000,
@@ -9,6 +10,7 @@ const data = [
         area: 33846,
     },
     {
+        id: 2,
         name: 'Romania',
         capital: 'București',
         population: 20121641,
@@ -18,6 +20,7 @@ const data = [
         area: 238397,
     },
     {
+        id: 3,
         name: 'Ucraina',
         capital: 'Kiev',
         population: 4845700,
@@ -27,6 +30,7 @@ const data = [
         area: 603634,
     },
     {
+        id: 4,
         name: 'Uganda',
         capital: 'Kampala',
         population: 34634650,
@@ -36,6 +40,7 @@ const data = [
         area: 236040,
     },
     {
+        id: 5,
         name: 'Zimbabwe',
         capital: 'Harare',
         population: 12160782,
@@ -45,6 +50,7 @@ const data = [
         area: 390757,
     },
     {
+        id: 6,
         name: 'North Korea',
         capital: 'Pyongyang',
         population: 25368620,
