@@ -14,4 +14,7 @@
     display: flex;
     justify-content: center;
 }
+.data-table .mdl-data-table th {
+    cursor: pointer;
+}
 

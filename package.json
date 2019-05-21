@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/rediska97/ES6#readme",
   "dependencies": {
+    "classnames": "^2.2.6",
     "lit-html": "^1.0.0",
     "parcel-bundler": "^1.12.3"
   },

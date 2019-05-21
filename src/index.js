@@ -1,13 +1,28 @@
 import {html, render} from 'lit-html/lit-html';
 import {countriesList} from "./country";
+import classNames from "classnames"
 
 const AppContainer = (props) => html`<div>${props}</div>`;
+
+let choosenSort = null
+let sortOrder = 1;
 
 const MDTable = (countriesList) => html`
     <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
         <thead>
             <tr>
-                ${Object.keys(countriesList[0]).map( (label) => html`<th>${formatLabel(label)}</th>` )}
+                ${Object.keys(countriesList[0]).map( (label) => 
+    html`<th 
+        class=${classNames({
+        "asc" : choosenSort && choosenSort === label && sortOrder === 1,
+        "dsc" : choosenSort && choosenSort === label && sortOrder === -1
+    })}
+        
+        @click=${sortHandler(label)}
+        >    
+        ${formatLabel(label)}
+        </th>
+        ` )}
             </tr>
         </thead>
        <tbody>
@@ -15,6 +30,7 @@ const MDTable = (countriesList) => html`
         </tbody>
     </table>
 `;
+
 
 const MDTableRow = (country) => html`
 <tr>
@@ -35,14 +51,31 @@ function formatLabel (label) {
 
 };
 
-const clickHandler = {
-
+const sortHandler =  (label) => ({
     handleEvent(e) {
-        console.log('clicked!');
-    },
-    capture: true,
-};
+        if(choosenSort === label) {
+            sortOrder = sortOrder * -1;
+        }
+    choosenSort = label;
 
+    countriesList.sort(dynamicSort(label));
+        renderRoot();
+    }
+})
 
+function dynamicSort(property, sortOrder) {
+    return function (a,b) {
+        /* next line works with strings and numbers,
+         * and you may want to customize it to your needs
+         */
+        var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+        return result * sortOrder;
+    }
+}
+
+function renderRoot () {
+    render(MDTable(countriesList), document.querySelector('.data-table'));
+}
 // Render the template to the document
-render(MDTable(countriesList), document.querySelector('.data-table'));
+
+renderRoot();
