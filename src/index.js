@@ -14,10 +14,9 @@ const MDTable = (countriesList) => html`
                 ${Object.keys(countriesList[0]).map( (label) => 
     html`<th 
         class=${classNames({
-        "asc" : choosenSort && choosenSort === label && sortOrder === 1,
-        "dsc" : choosenSort && choosenSort === label && sortOrder === -1
+        "mdl-data-table__header--sorted-ascending" : choosenSort && choosenSort === label && sortOrder === 1,
+        "mdl-data-table__header--sorted-descending" : choosenSort && choosenSort === label && sortOrder === -1
     })}
-        
         @click=${sortHandler(label)}
         >    
         ${formatLabel(label)}
@@ -58,8 +57,8 @@ const sortHandler =  (label) => ({
         }
     choosenSort = label;
 
-    countriesList.sort(dynamicSort(label));
-        renderRoot();
+    countriesList.sort(dynamicSort(label, sortOrder));
+    renderRoot();
     }
 })
 
