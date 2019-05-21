@@ -1,5 +1,5 @@
-import {html, render} from 'lit-html';
-import {countriesList} from "./JS/country";
+import {html, render} from 'lit-html/lit-html';
+import {countriesList} from "./country";
 
 const AppContainer = (props) => html`<div>${props}</div>`;
 
@@ -12,7 +12,6 @@ const MDTable = (countriesList) => html`
         </thead>
        <tbody>
        ${countriesList.map( (country) => MDTableRow(country) ) }
-       
         </tbody>
     </table>
 `;
@@ -23,8 +22,8 @@ ${Object.keys(country).map(key => html`<td>${country[key]}</td>`)}
 </tr>
 `;
 
+// Format th text
 function formatLabel (label) {
-
     let result = label;
     for (let i = 0; i<label.length; i++){
 
@@ -35,6 +34,15 @@ function formatLabel (label) {
     return result.toLocaleLowerCase();
 
 };
+
+const clickHandler = {
+
+    handleEvent(e) {
+        console.log('clicked!');
+    },
+    capture: true,
+};
+
 
 // Render the template to the document
 render(MDTable(countriesList), document.querySelector('.data-table'));
