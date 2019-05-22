@@ -18,3 +18,12 @@
     cursor: pointer;
 }
 
+.filters{
+    display: flex;
+    flex-direction: column;
+    padding: 0 15px;
+}
+
+.mdl-textfield{
+    margin-bottom: -15px;
+}
