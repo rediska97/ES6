@@ -47,7 +47,6 @@ function formatLabel(label) {
         }
     }
     return result.toLocaleLowerCase();
-
 };
 
 // on th click, sort by label
@@ -69,49 +68,40 @@ function dynamicSort(property, sortOrder) {
     }
 }
 
-function renderRoot() {
-    render(MDTable(listForRender), document.querySelector('.data-table'));
-}
-
-// Render the template to the document
-renderRoot();
-
-
 const filterInputValues = {}
 Object.keys(countriesList[0]).forEach(key => filterInputValues[key] = '')
-console.log(filterInputValues)
+
 
 const MDFilters = (countriesList) => html`
  ${Object.keys(countriesList[0]).map((label) => html`
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        
-        <input class="mdl-textfield__input" type="text" id="addr1" value=${filterInputValues[label]} @change=${setInputValueHandler(label)}>
-        
+        <input 
+        class="mdl-textfield__input" 
+        type="text"  
+        @value=${filterInputValues[label]} 
+        @change=${setInputValueHandler(label)}>
         <label class="mdl-textfield__label" for="addr1">${label}</label>
-        
       </div>`)}
-      <button @click=${filterHandler('label')} class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+      <button 
+      @click=${filterHandler()} 
+      class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
            Filter
       </button>
-
 `;
 
-const filterHandler = (label) => ({
+const filterHandler = () => ({
     handleEvent(e) {
         listForRender = countriesList.filter( country => {
             for(const [key, value] of Object.entries(filterInputValues)) {
-                console.log(country[key], value, value.toString())
                 const checkValue= value.toString().toLowerCase();
                 const countryKeyFiltered = country[key].toString().toLowerCase();
+
                 if(!countryKeyFiltered.includes(checkValue) && checkValue !== "") {
                     return false
                 }
             }
             return true
         })
-
-        console.log(countriesList);
-
         renderRoot();
     }
 })
@@ -122,4 +112,10 @@ const setInputValueHandler = (label) => ({
     }
 })
 
+function renderRoot() {
+    render(MDTable(listForRender), document.querySelector('.data-table'));
+}
 render(MDFilters(listForRender), document.querySelector('.filters'));
+// Render the template to the document
+renderRoot();
+
