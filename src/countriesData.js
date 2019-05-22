@@ -59,6 +59,16 @@ const data = [
         timeZone: '+9GMT',
         area: 390757,
     },
+    {
+        id: 7,
+        name: 'Ecuador',
+        capital: 'Quito',
+        population: 15007343,
+        phoneCode: '+593',
+        currency: 'USD',
+        timeZone: '-5UTC',
+        area: 272046,
+    },
 ];
 
 export default data;

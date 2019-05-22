@@ -8,7 +8,7 @@ let choosenSort = null
 let sortOrder = 1;
 
 const MDTable = (countriesList = []) => html`
-    <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
         <thead>
             <tr>
                 ${countriesList[0] && Object.keys(countriesList[0]).map((label) =>
@@ -100,13 +100,17 @@ const filterHandler = (label) => ({
     handleEvent(e) {
         listForRender = countriesList.filter( country => {
             for(const [key, value] of Object.entries(filterInputValues)) {
-                console.log(country[key], value)
-                if(country[key] != value && value !== "") {
+                console.log(country[key], value, value.toString())
+                const checkValue= value.toString().toLowerCase();
+                const countryKeyFiltered = country[key].toString().toLowerCase();
+                if(!countryKeyFiltered.includes(checkValue) && checkValue !== "") {
                     return false
                 }
             }
             return true
         })
+
+        console.log(countriesList);
 
         renderRoot();
     }
